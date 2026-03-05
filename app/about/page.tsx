@@ -1,5 +1,3 @@
-'use client'
-
 import type { Metadata } from 'next'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBullseye, faEye, faHeart, faCheck } from '@fortawesome/free-solid-svg-icons'

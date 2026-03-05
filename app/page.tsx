@@ -1,5 +1,3 @@
-'use client'
-
 import type { Metadata } from 'next'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBullseye, faEye, faHeart, faShieldAlt, faUserCheck, faChalkboardTeacher, faFileContract, faExclamationTriangle, faClipboardCheck, faUsers, faGavel, faHandshake, faGraduationCap, faVenusMars, faBalanceScale, faCity } from '@fortawesome/free-solid-svg-icons'
