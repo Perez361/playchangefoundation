@@ -1,32 +1,36 @@
-# Next.js Conversion TODO List
+# TODO - PlayChange Foundation Website Conversion Update
 
-## Phase 1: Project Setup
-- [ ] Create package.json with dependencies
-- [ ] Create next.config.js
-- [ ] Create tailwind.config.js
-- [ ] Create postcss.config.js
-- [ ] Create tsconfig.json
-- [ ] Create app/layout.tsx (root layout)
-- [ ] Create app/globals.css
-- [ ] Copy images to public/images
+## Task List
 
-## Phase 2: Components
-- [ ] Create components/Navbar.tsx
-- [ ] Create components/Footer.tsx
-- [ ] Create components/LoadingSpinner.tsx
-- [ ] Create components/Hero.tsx
+### 1. Navbar Component
+- [x] Add logo and brand name
+- [x] Add Donate Now button
+- [x] Ensure proper styling matches original
 
-## Phase 3: Pages
-- [ ] Create app/page.tsx (Home)
-- [ ] Create app/about/page.tsx
-- [ ] Create app/contact/page.tsx
-- [ ] Create app/initiatives/page.tsx
+### 2. Footer Component
+- [x] Add contact information section
+- [x] Add quick links section
+- [x] Update social media links with proper styling
+- [x] Add copyright
 
-## Phase 4: Configuration Files
-- [ ] Create robots.txt
-- [ ] Create sitemap.ts
-- [ ] Create .htaccess (for deployment)
+### 3. Home Page (app/page.tsx)
+- [x] Add SDG (Sustainable Development Goals) section
+- [x] Add Safeguarding section
+- [x] Add Partners section
+- [x] Update Impact section with proper statistics
+- [x] Add Donation modal component
 
-## Phase 5: Verification
-- [ ] Test the build
-- [ ] Verify all pages work correctly
+### 4. About Page (app/about/page.tsx)
+- [x] Add full "Our Story" section with detailed content
+- [x] Add complete team section with 7 team members
+- [x] Update Impact statistics section
+
+### 5. Contact Form Component
+- [x] Add contact information (address, email, phone)
+- [x] Update social media links
+- [x] Fix styling
+
+### 6. Commit Changes to GitHub
+- [ ] Commit all changes
+- [ ] Push to GitHub
+

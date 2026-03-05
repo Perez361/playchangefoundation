@@ -13,12 +13,10 @@ export default function ContactForm() {
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setSubmitStatus('idle')
 
     // Basic form validation
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
@@ -38,7 +36,6 @@ export default function ContactForm() {
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false)
-      setSubmitStatus('success')
       alert('Thank you for your message! We will get back to you soon.')
       setFormData({ name: '', email: '', subject: '', message: '' })
     }, 1000)
@@ -59,13 +56,13 @@ export default function ContactForm() {
               <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
               <div className="space-y-6 contact-info">
                 <div className="flex items-start space-x-4">
-                  <div className="text-blue-600 text-2xl mt-1">
+                  <div className="text-emerald-600 text-2xl mt-1">
                     <FontAwesomeIcon icon={faMapMarkerAlt} />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Location</h3>
                     <p className="text-gray-600">
-                      Sports Department<br />
+                      Department of Physical Education & Sport Studies<br />
                       University of Ghana<br />
                       Legon, Accra<br />
                       Ghana
@@ -73,25 +70,25 @@ export default function ContactForm() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="text-blue-600 text-2xl mt-1">
+                  <div className="text-emerald-600 text-2xl mt-1">
                     <FontAwesomeIcon icon={faEnvelope} />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Email</h3>
-                    <p className="text-gray-600">info@playchangefoundation.org</p>
+                    <a href="mailto:info@playchangefoundation.org" className="text-emerald-600 hover:underline">info@playchangefoundation.org</a>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="text-blue-600 text-2xl mt-1">
+                  <div className="text-emerald-600 text-2xl mt-1">
                     <FontAwesomeIcon icon={faPhone} />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Phone</h3>
-                    <p className="text-gray-600">+233 (0) 123 456 789</p>
+                    <p className="text-gray-600">+233 (0) 54 777 1914</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-4">
-                  <div className="text-blue-600 text-2xl mt-1">
+<div className="flex items-start space-x-4">
+                  <div className="text-emerald-600 text-2xl mt-1">
                     <FontAwesomeIcon icon={faClock} />
                   </div>
                   <div>
@@ -109,16 +106,16 @@ export default function ContactForm() {
               <div className="mt-12 social-media">
                 <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
-                  <a href="#" className="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors duration-300" aria-label="Facebook">
+                  <a href="#" className="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-emerald-700 transition-colors duration-300" aria-label="Facebook">
                     <FontAwesomeIcon icon={faFacebook} />
                   </a>
-                  <a href="#" className="bg-blue-400 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors duration-300" aria-label="Twitter">
+                  <a href="#" className="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-emerald-700 transition-colors duration-300" aria-label="Twitter">
                     <FontAwesomeIcon icon={faTwitter} />
                   </a>
                   <a href="#" className="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors duration-300" aria-label="Instagram">
                     <FontAwesomeIcon icon={faInstagram} />
                   </a>
-                  <a href="#" className="bg-blue-800 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-900 transition-colors duration-300" aria-label="LinkedIn">
+                  <a href="#" className="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-emerald-700 transition-colors duration-300" aria-label="LinkedIn">
                     <FontAwesomeIcon icon={faLinkedin} />
                   </a>
                 </div>
@@ -138,7 +135,7 @@ export default function ContactForm() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-colors duration-300"
                     placeholder="Your full name"
                   />
                 </div>
@@ -151,7 +148,7 @@ export default function ContactForm() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-colors duration-300"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -164,7 +161,7 @@ export default function ContactForm() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-colors duration-300"
                     placeholder="Message subject"
                   />
                 </div>
@@ -177,14 +174,14 @@ export default function ContactForm() {
                     onChange={handleChange}
                     rows={5} 
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-colors duration-300"
                     placeholder="Your message"
                   ></textarea>
                 </div>
                 <button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-emerald-600 text-white py-3 px-6 rounded-lg hover:bg-emerald-700 transition-colors duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
@@ -196,3 +193,4 @@ export default function ContactForm() {
     </>
   )
 }
+
