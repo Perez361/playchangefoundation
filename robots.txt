@@ -1,0 +1,13 @@
+# robots.txt for PlayChange Foundation
+# This file tells search engines which pages they can and cannot crawl
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://playchangefoundation.org/sitemap.xml
+
+# Disallow crawling of specific directories (if any)
+# Uncomment and modify as needed:
+# Disallow: /admin/
+# Disallow: /private/

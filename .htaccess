@@ -1,0 +1,131 @@
+# PlayChange Foundation - Cache Management & Performance Configuration
+# This file controls browser caching and ensures updates are visible immediately
+
+# Enable Rewrite Engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+</IfModule>
+
+# ============================================
+# CACHE CONTROL - Prevent Old Files from Showing
+# ============================================
+
+# Disable caching for HTML files (always get fresh version)
+<FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+</FilesMatch>
+
+# Short cache for CSS and JavaScript (1 hour - easy to update)
+<FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+</FilesMatch>
+
+# Longer cache for images (1 week - rarely change)
+<FilesMatch "\.(jpg|jpeg|png|gif|ico|svg|webp)$">
+    Header set Cache-Control "public, max-age=604800, immutable"
+</FilesMatch>
+
+# Cache fonts for 1 month
+<FilesMatch "\.(woff|woff2|ttf|eot)$">
+    Header set Cache-Control "public, max-age=2592000, immutable"
+</FilesMatch>
+
+# ============================================
+# FORCE HTTPS (Secure Connection)
+# ============================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ============================================
+# COMPRESSION - Faster Loading
+# ============================================
+
+<IfModule mod_deflate.c>
+    # Compress HTML, CSS, JavaScript, Text, XML
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ============================================
+# BROWSER COMPATIBILITY
+# ============================================
+
+# Remove ETags (can cause caching issues)
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
+
+# ============================================
+# SECURITY HEADERS
+# ============================================
+
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Enable XSS protection
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ============================================
+# ERROR PAGES (Optional)
+# ============================================
+
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
+
+# ============================================
+# FORCE WWW or NON-WWW (Choose one)
+# ============================================
+
+# Force non-www (Recommended)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</IfModule>
+
+# OR Force www (Comment out the above and uncomment below if you prefer www)
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTP_HOST} !^www\. [NC]
+#     RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+# </IfModule>
+
+# ============================================
+# PREVENT DIRECTORY BROWSING
+# ============================================
+
+Options -Indexes
+
+# ============================================
+# ALLOW CORS FOR FONTS (if needed)
+# ============================================
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(woff|woff2|ttf|eot)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
