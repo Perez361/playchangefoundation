@@ -33,9 +33,9 @@ export default function Navbar() {
     <>
       <nav className="bg-white shadow-lg fixed w-full z-50" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center h-16 relative">
-            <Link href="/" className="logo-container pl-4" aria-label="PlayChange Foundation Home">
-              <div className="relative h-10 w-10">
+          <div className="flex justify-between items-center h-16">
+            <Link href="/" className="flex items-center" aria-label="PlayChange Foundation Home">
+              <div className="relative h-10 w-10 flex-shrink-0">
                 <Image 
                   src="/images/pcf-logo.png" 
                   alt="PlayChange Foundation Logo" 
@@ -43,13 +43,13 @@ export default function Navbar() {
                   className="object-contain"
                 />
               </div>
-              <span className="logo-text ml-2 text-emerald-600 font-semibold">PlayChange Foundation</span>
+              <span className="ml-2 text-primary font-semibold text-lg">PlayChange Foundation</span>
             </Link>
             
             {/* Mobile menu button */}
             <button 
               id="mobileMenuBtn"
-              className="md:hidden text-gray-600 hover:text-emerald-600 focus:outline-none" 
+              className="md:hidden text-gray-600 hover:text-primary focus:outline-none" 
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -65,8 +65,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`${
                     isActive(link.href)
-                      ? 'text-emerald-600'
-                      : 'text-gray-600 hover:text-emerald-600'
+                      ? 'text-primary'
+                      : 'text-gray-600 hover:text-primary'
                   }`}
                   role="menuitem"
                   aria-current={isActive(link.href) ? 'page' : undefined}
@@ -76,7 +76,7 @@ export default function Navbar() {
               ))}
               <button 
                 onClick={() => setIsDonationModalOpen(true)}
-                className="bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-700 transition duration-300 flex items-center gap-2"
+                className="bg-primary text-white px-4 py-2 rounded-full hover:opacity-90 transition duration-300 flex items-center gap-2"
               >
                 <FontAwesomeIcon icon={faHeart} />
                 Donate Now
@@ -96,8 +96,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`py-2 px-4 rounded hover:bg-gray-100 ${
                     isActive(link.href)
-                      ? 'text-emerald-600'
-                      : 'text-gray-600 hover:text-emerald-600'
+                      ? 'text-primary'
+                      : 'text-gray-600 hover:text-primary'
                   }`}
                 >
                   {link.label}
@@ -105,7 +105,7 @@ export default function Navbar() {
               ))}
               <button 
                 onClick={() => setIsDonationModalOpen(true)}
-                className="donate-btn w-full mt-2 bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-700 transition duration-300 flex items-center justify-center gap-2"
+                className="donate-btn w-full mt-2 bg-primary text-white px-4 py-2 rounded-full hover:opacity-90 transition duration-300 flex items-center justify-center gap-2"
               >
                 <FontAwesomeIcon icon={faHeart} />
                 Donate Now
@@ -127,7 +127,7 @@ export default function Navbar() {
               <FontAwesomeIcon icon={faTimes} className="text-xl" />
             </button>
             
-            <h2 className="text-2xl font-bold mb-2 text-emerald-800">Support Our Mission</h2>
+            <h2 className="text-2xl font-bold mb-2 text-primary">Support Our Mission</h2>
             <p className="text-sm mb-4 text-gray-600">Your donation helps us empower communities through sports</p>
             
             <div className="bg-amber-50 rounded-lg p-4 mb-4">

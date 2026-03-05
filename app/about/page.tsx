@@ -126,7 +126,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-emerald-600 text-4xl mb-4">
+              <div className="text-primary text-4xl mb-4">
                 <FontAwesomeIcon icon={faBullseye} />
               </div>
               <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
@@ -135,7 +135,7 @@ export default function About() {
               </p>
             </div>
             <div className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-emerald-600 text-4xl mb-4">
+              <div className="text-primary text-4xl mb-4">
                 <FontAwesomeIcon icon={faEye} />
               </div>
               <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
@@ -144,15 +144,15 @@ export default function About() {
               </p>
             </div>
             <div className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-emerald-600 text-4xl mb-4">
+              <div className="text-primary text-4xl mb-4">
                 <FontAwesomeIcon icon={faHeart} />
               </div>
               <h3 className="text-2xl font-bold mb-4">Our Values</h3>
               <ul className="text-gray-600 space-y-2">
-                <li><FontAwesomeIcon icon={faCheck} className="text-emerald-600 mr-2" />Inclusiveness</li>
-                <li><FontAwesomeIcon icon={faCheck} className="text-emerald-600 mr-2" />Respect</li>
-                <li><FontAwesomeIcon icon={faCheck} className="text-emerald-600 mr-2" />Innovation</li>
-                <li><FontAwesomeIcon icon={faCheck} className="text-emerald-600 mr-2" />Collaboration</li>
+                <li><FontAwesomeIcon icon={faCheck} className="text-primary mr-2" />Inclusiveness</li>
+                <li><FontAwesomeIcon icon={faCheck} className="text-primary mr-2" />Respect</li>
+                <li><FontAwesomeIcon icon={faCheck} className="text-primary mr-2" />Innovation</li>
+                <li><FontAwesomeIcon icon={faCheck} className="text-primary mr-2" />Collaboration</li>
               </ul>
             </div>
           </div>
@@ -170,19 +170,19 @@ export default function About() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-emerald-600 mb-2">50+</div>
+              <div className="text-4xl font-bold text-primary mb-2">50+</div>
               <p className="text-gray-600">Students Supported</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-emerald-600 mb-2">3+</div>
+              <div className="text-4xl font-bold text-primary mb-2">3+</div>
               <p className="text-gray-600">Communities Reached</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-emerald-600 mb-2">5+</div>
+              <div className="text-4xl font-bold text-primary mb-2">5+</div>
               <p className="text-gray-600">Sports Programs</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-emerald-600 mb-2">100+</div>
+              <div className="text-4xl font-bold text-primary mb-2">100+</div>
               <p className="text-gray-600">Lives Impacted</p>
             </div>
           </div>

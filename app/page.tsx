@@ -108,7 +108,7 @@ export default function Home() {
           <div>
             <h1 className="text-5xl md:text-6xl font-bold mb-4">PlayChange Foundation</h1>
             <p className="text-xl md:text-2xl mb-8">Inspiring development and change through sports and play</p>
-            <a href="#learn-more" className="bg-emerald-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-emerald-700 transition duration-300 ease-in-out">
+            <a href="#learn-more" className="bg-primary text-white px-8 py-3 rounded-full text-lg font-semibold hover:opacity-90 transition duration-300 ease-in-out">
               Learn More
             </a>
           </div>
@@ -116,7 +116,7 @@ export default function Home() {
       </header>
 
       {/* Who We Are Section */}
-      <section id="learn-more" className="py-20 bg-gradient-to-br from-emerald-50 to-blue-50" aria-label="About Us Section">
+      <section id="learn-more" className="py-20 bg-gradient-to-br from-primary/10 to-blue-50" aria-label="About Us Section">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Who We Are</h2>
@@ -126,21 +126,21 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-lg transition-shadow">
-              <div className="text-emerald-600 text-5xl mb-4">
+              <div className="text-primary text-5xl mb-4">
                 <FontAwesomeIcon icon={faBullseye} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-800">Our Mission</h3>
               <p className="text-gray-600">To inspire development and change through sports and play.</p>
             </div>
             <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-lg transition-shadow">
-              <div className="text-emerald-600 text-5xl mb-4">
+              <div className="text-primary text-5xl mb-4">
                 <FontAwesomeIcon icon={faEye} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-800">Our Vision</h3>
               <p className="text-gray-600">A Ghana where everyone can achieve their full potential through sport and physical activity.</p>
             </div>
             <div className="bg-white rounded-xl p-8 text-center shadow-md hover:shadow-lg transition-shadow">
-              <div className="text-emerald-600 text-5xl mb-4">
+              <div className="text-primary text-5xl mb-4">
                 <FontAwesomeIcon icon={faHeart} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-800">Our Values</h3>
@@ -178,7 +178,7 @@ export default function Home() {
       </section>
 
       {/* Safeguarding Section */}
-      <section className="py-20 bg-gradient-to-br from-emerald-50 to-blue-50" aria-label="Safeguarding">
+      <section className="py-20 bg-gradient-to-br from-primary/10 to-blue-50" aria-label="Safeguarding">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">How We Align Safeguarding to Our Work</h2>
@@ -187,7 +187,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {safeguarding.map((item, index) => (
               <div key={index} className="bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-emerald-600 text-4xl mb-4">
+                <div className="text-primary text-4xl mb-4">
                   <FontAwesomeIcon icon={item.icon} />
                 </div>
                 <h3 className="text-lg font-bold mb-2">{item.title}</h3>
@@ -196,9 +196,9 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <div className="bg-emerald-100 rounded-xl p-8 max-w-4xl mx-auto shadow-sm border border-emerald-200">
+            <div className="bg-primary/10 rounded-xl p-8 max-w-4xl mx-auto shadow-sm border border-primary/20">
               <p className="text-gray-700 font-semibold mb-2">
-                <FontAwesomeIcon icon={faShieldAlt} className="text-emerald-600 mr-2" />
+                <FontAwesomeIcon icon={faShieldAlt} className="text-primary mr-2" />
                 Our Commitment
               </p>
               <p className="text-gray-600">
@@ -210,7 +210,7 @@ export default function Home() {
       </section>
 
       {/* Impact Section */}
-      <section className="bg-emerald-600 text-white py-20" aria-label="Impact Statistics">
+      <section className="bg-primary text-white py-20" aria-label="Impact Statistics">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Impact</h2>

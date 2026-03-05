@@ -57,16 +57,16 @@ export default function Footer() {
             
             <h3 className="text-xl font-bold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="#" className="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-emerald-700 transition-colors duration-300" aria-label="Facebook">
+              <a href="#" className="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-colors duration-300" aria-label="Facebook">
                 <FontAwesomeIcon icon={faFacebook} />
               </a>
-              <a href="#" className="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-emerald-700 transition-colors duration-300" aria-label="Twitter">
+              <a href="#" className="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-colors duration-300" aria-label="Twitter">
                 <FontAwesomeIcon icon={faTwitter} />
               </a>
               <a href="#" className="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors duration-300" aria-label="Instagram">
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
-              <a href="#" className="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-emerald-700 transition-colors duration-300" aria-label="LinkedIn">
+              <a href="#" className="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-colors duration-300" aria-label="LinkedIn">
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
             </div>
