@@ -31,6 +31,8 @@
 - [x] Fix styling
 
 ### 6. Commit Changes to GitHub
-- [ ] Commit all changes
-- [ ] Push to GitHub
+- [x] Commit all changes
+- [x] Push to GitHub
+
+## ✅ All Tasks Completed!
 
