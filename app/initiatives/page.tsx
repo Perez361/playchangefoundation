@@ -115,15 +115,15 @@ export default function Initiatives() {
       </div>
 
       {/* Initiatives Section */}
-      <section className="py-20">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           {initiatives.map((initiative) => (
             <div 
               key={initiative.id} 
-              className={`bg-white rounded-lg shadow-lg overflow-hidden mb-12 flex flex-col md:flex-row ${initiative.reverse ? 'md:flex-row-reverse' : ''} items-center`}
+              className={`bg-white rounded-2xl shadow-lg overflow-hidden mb-12 flex flex-col md:flex-row ${initiative.reverse ? 'md:flex-row-reverse' : ''} items-center card-hover`}
             >
-              <div className="md:w-1/2">
-                <div className="relative w-full h-64 md:h-full min-h-[300px]">
+              <div className="md:w-1/2 w-full">
+                <div className="relative w-full h-64 md:h-full min-h-[300px] img-zoom">
                   <Image 
                     src={initiative.image} 
                     alt={initiative.imageAlt} 
@@ -132,7 +132,7 @@ export default function Initiatives() {
                   />
                 </div>
               </div>
-              <div className="md:w-1/2 p-8">
+              <div className="md:w-1/2 p-8 w-full">
                 <h2 className="text-3xl font-bold mb-4">{initiative.title}</h2>
                 <p className="text-gray-600 mb-6">{initiative.description}</p>
                 <ul className="space-y-3 text-gray-600">
