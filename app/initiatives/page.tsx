@@ -120,7 +120,7 @@ export default function Initiatives() {
           {initiatives.map((initiative) => (
             <div 
               key={initiative.id} 
-              className={`bg-white rounded-lg shadow-lg overflow-hidden mb-12 ${initiative.reverse ? 'md:flex-row-reverse' : 'md:flex'}`}
+              className={`bg-white rounded-lg shadow-lg overflow-hidden mb-12 flex flex-col md:flex-row ${initiative.reverse ? 'md:flex-row-reverse' : ''} items-center`}
             >
               <div className="md:w-1/2">
                 <div className="relative w-full h-64 md:h-full min-h-[300px]">
@@ -137,7 +137,7 @@ export default function Initiatives() {
                 <p className="text-gray-600 mb-6">{initiative.description}</p>
                 <ul className="space-y-3 text-gray-600">
                   {initiative.points.map((point, i) => (
-                    <li key={i}><FontAwesomeIcon icon={faCheck} className="text-green-600 mr-2" />{point}</li>
+                    <li key={i}><FontAwesomeIcon icon={faCheck} className="text-primary mr-2" />{point}</li>
                   ))}
                 </ul>
               </div>
@@ -147,11 +147,11 @@ export default function Initiatives() {
       </section>
 
       {/* Call to Action */}
-      <section className="bg-green-600 py-20">
+      <section className="bg-primary py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Join Us in Making a Difference</h2>
           <p className="text-white text-xl mb-8">Together, we can create positive change through sports</p>
-          <Link href="/contact" className="bg-white text-green-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full transition-colors duration-300 inline-block">
+          <Link href="/contact" className="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-full transition-colors duration-300 inline-block">
             Get Involved
           </Link>
         </div>

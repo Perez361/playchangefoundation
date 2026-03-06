@@ -1,38 +1,33 @@
-# TODO - PlayChange Foundation Website Conversion Update
+# TODO: Color Theme Change - Green to Dark Navy Blue
 
-## Task List
+## Task
+Change green color theme to dark navy blue (`primary`) throughout the project and fix initiative card alignment.
 
-### 1. Navbar Component
-- [x] Add logo and brand name
-- [x] Add Donate Now button
-- [x] Ensure proper styling matches original
+## Files to Edit:
+- [x] 1. app/initiatives/page.tsx - Change green colors to navy blue, fix card alignment
+- [x] 2. app/about/page.tsx - Change emerald badge colors to navy blue
+- [x] 3. components/ContactForm.tsx - Change emerald colors to navy blue
 
-### 2. Footer Component
-- [x] Add contact information section
-- [x] Add quick links section
-- [x] Update social media links with proper styling
-- [x] Add copyright
+## Changes Made:
 
-### 3. Home Page (app/page.tsx)
-- [x] Add SDG (Sustainable Development Goals) section
-- [x] Add Safeguarding section
-- [x] Add Partners section
-- [x] Update Impact section with proper statistics
-- [x] Add Donation modal component
+### 1. app/initiatives/page.tsx
+- CTA section: `bg-green-600` → `bg-primary`
+- Checkmarks: `text-green-600` → `text-primary`
+- Button: `text-green-600` → `text-primary`
+- Added proper card alignment with `items-center` class
 
-### 4. About Page (app/about/page.tsx)
-- [x] Add full "Our Story" section with detailed content
-- [x] Add complete team section with 7 team members
-- [x] Update Impact statistics section
+### 2. app/about/page.tsx
+- Team badges: `bg-emerald-100 text-emerald-600` → `bg-primary/10 text-primary`
+- Role text: `text-emerald-600` → `text-primary`
+- Hover states: `hover:text-emerald-600` → `hover:text-primary`
 
-### 5. Contact Form Component
-- [x] Add contact information (address, email, phone)
-- [x] Update social media links
-- [x] Fix styling
+### 3. components/ContactForm.tsx
+- Icons: `text-emerald-600` → `text-primary`
+- Links: `text-emerald-600` → `text-primary`
+- Social buttons: `bg-emerald-600` → `bg-primary`
+- Form focus: `focus:border-emerald-500` → `focus:border-primary`
+- Form ring: `focus:ring-emerald-200` → `focus:ring-primary/20`
+- Submit button: `bg-emerald-600 hover:bg-emerald-700` → `bg-primary hover:bg-primary/90`
 
-### 6. Commit Changes to GitHub
-- [x] Commit all changes
-- [x] Push to GitHub
-
-## ✅ All Tasks Completed!
+## Status: COMPLETED ✅
 
