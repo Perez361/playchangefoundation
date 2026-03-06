@@ -102,7 +102,7 @@ export default function Home() {
       {/* Hero Section */}
       <header className="relative h-screen">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/hero.jpg')" }}>
-          <div className="hero-overlay absolute inset-0 bg-black opacity-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
         </div>
         <div className="relative h-full flex items-center justify-center text-center text-white px-4">
           <div>

@@ -103,7 +103,7 @@ export default function Initiatives() {
       <div className="relative pt-16">
         <div className="h-[400px] relative">
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/initiatives.jpg')" }}>
-            <div className="absolute inset-0 bg-black opacity-50"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center text-white px-4">
