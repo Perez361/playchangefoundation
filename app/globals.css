@@ -235,6 +235,45 @@ body {
 
 /* Mobile Styles */
 @media (max-width: 768px) {
+  /* Typography adjustments */
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  p {
+    font-size: 0.95rem;
+  }
+
+  /* Hero section mobile */
+  header .text-5xl,
+  header .text-6xl {
+    font-size: 2.5rem !important;
+  }
+  
+  header .text-xl,
+  header .text-2xl {
+    font-size: 1.1rem !important;
+  }
+
+  /* Grid adjustments */
+  .grid {
+    gap: 1.5rem;
+  }
+
+  /* Section padding */
+  section {
+    padding: 3rem 1rem;
+  }
+
+  /* Contact section */
   .contact-section h2,
   .contact-section h3,
   .contact-section p,
@@ -298,6 +337,7 @@ body {
     border-radius: 1rem;
   }
 
+  /* Mobile menu button */
   #mobileMenuBtn {
     display: flex;
     align-items: center;
@@ -336,10 +376,11 @@ body {
 
   #mobileMenu a:hover {
     background-color: #f7fafc;
-    color: #2b6cb0;
+    color: #02024a;
     transform: translateX(4px);
   }
 
+  /* Footer mobile */
   footer .grid > div {
     text-align: center;
     margin-bottom: 2rem;
@@ -374,6 +415,85 @@ body {
   footer .border-t {
     margin-top: 2rem;
     padding-top: 2rem;
+  }
+
+  /* Initiative cards on mobile */
+  .initiative-card {
+    margin-bottom: 1.5rem;
+  }
+
+  /* SDG cards on mobile */
+  .md\:grid-cols-2,
+  .lg\:grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+
+  /* About page team grid */
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* About page story section */
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Impact section */
+  .impact-stats {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Button sizing */
+  .btn-animate,
+  a.bg-primary,
+  button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* Image sizing */
+  .img-zoom img {
+    transform: none;
+  }
+
+  /* Form inputs */
+  input,
+  textarea {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  header .text-5xl,
+  header .text-6xl {
+    font-size: 2rem !important;
+  }
+
+  section {
+    padding: 2rem 0.75rem;
+  }
+
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Tablet devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid-cols-tablet {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

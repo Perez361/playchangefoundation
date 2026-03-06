@@ -104,24 +104,24 @@ export default function Home() {
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/hero.jpg')" }}>
           <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
         </div>
-        <div className="relative h-full flex items-center justify-center text-center text-white px-4">
+        <div className="relative h-full flex items-center justify-center text-center text-white px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">PlayChange Foundation</h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90">Inspiring development and change through sports and play</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#learn-more" className="bg-primary text-white px-8 py-3 rounded-full text-lg font-semibold hover:opacity-90 transition duration-300 ease-in-out btn-animate shine">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 leading-tight">PlayChange Foundation</h1>
+            <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 opacity-90">Inspiring development and change through sports and play</p>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+              <a href="#learn-more" className="bg-primary text-white px-6 sm:px-8 py-3 rounded-full text-base sm:text-lg font-semibold hover:opacity-90 transition duration-300 ease-in-out btn-animate shine w-full sm:w-auto">
                 Learn More
               </a>
-              <a href="/contact" className="border-2 border-white text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-primary transition duration-300 ease-in-out">
+              <a href="/contact" className="border-2 border-white text-white px-6 sm:px-8 py-3 rounded-full text-base sm:text-lg font-semibold hover:bg-white hover:text-primary transition duration-300 ease-in-out w-full sm:w-auto">
                 Get Involved
               </a>
             </div>
           </div>
         </div>
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center pt-2">
-            <div className="w-1 h-3 bg-white/70 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 sm:w-8 h-10 sm:h-12 border-2 border-white/50 rounded-full flex justify-center pt-2">
+            <div className="w-1 h-2 sm:h-3 bg-white/70 rounded-full animate-pulse"></div>
           </div>
         </div>
       </header>
