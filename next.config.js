@@ -25,6 +25,16 @@ const nextConfig = {
       { source: '/about.html', destination: '/about', permanent: true },
       { source: '/contact.html', destination: '/contact', permanent: true },
       { source: '/initiatives.html', destination: '/initiatives', permanent: true },
+      // Serve every page from one hostname. Canonicals, the sitemap and the
+      // Search Console property all use the apex domain, so www redirects to
+      // it. The host condition keeps this off the apex itself, so it can't
+      // redirect into a loop.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.playchangefoundation.org' }],
+        destination: 'https://playchangefoundation.org/:path*',
+        permanent: true,
+      },
     ]
   },
 }
