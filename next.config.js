@@ -15,6 +15,16 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'plus.unsplash.com',
       },
+      // News cover images live in Cloudflare R2. Covers both the default
+      // r2.dev subdomain and a custom media hostname.
+      {
+        protocol: 'https',
+        hostname: '**.r2.dev',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.playchangefoundation.org',
+      },
     ],
   },
   // Legacy URLs from the old static site. Google still has these indexed and

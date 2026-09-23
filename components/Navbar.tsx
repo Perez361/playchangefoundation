@@ -16,6 +16,7 @@ export default function Navbar() {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/initiatives', label: 'Initiatives' },
+    { href: '/news', label: 'News' },
     { href: '/contact', label: 'Contact' },
   ]
 

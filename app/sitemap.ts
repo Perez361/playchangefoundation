@@ -1,9 +1,14 @@
 import { MetadataRoute } from 'next'
+import { listPosts } from '@/lib/news'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://playchangefoundation.org'
+const baseUrl = 'https://playchangefoundation.org'
 
-  return [
+// Rebuild the sitemap on the same cadence as the news pages, so a post shows
+// up here without a redeploy.
+export const revalidate = 300
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -23,10 +28,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/news`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
   ]
+
+  // Ask for more than a page of posts; the listing default would silently cap
+  // the sitemap at nine entries.
+  const { posts } = await listPosts(1, 50)
+
+  const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${baseUrl}/news/${post.slug}`,
+    lastModified: post.publishedAt ? new Date(post.publishedAt) : new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }))
+
+  return [...staticRoutes, ...postRoutes]
 }
