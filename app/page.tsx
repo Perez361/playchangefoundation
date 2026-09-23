@@ -1,12 +1,14 @@
 import type { Metadata } from 'next'
+import { pageSeo } from './seo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBullseye, faEye, faHeart, faShieldAlt, faUserCheck, faChalkboardTeacher, faFileContract, faExclamationTriangle, faClipboardCheck, faUsers, faGavel, faHandshake, faGraduationCap, faVenusMars, faBalanceScale, faCity } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 
-export const metadata: Metadata = {
-  title: 'PlayChange Foundation - Empowering Communities Through Sports | Ghana',
-  description: 'PlayChange Foundation uses sports as a tool for social development in Ghana. We empower communities through sports and play, creating positive change and opportunities for youth.',
-}
+export const metadata: Metadata = pageSeo(
+  '/',
+  'PlayChange Foundation - Empowering Communities Through Sports | Ghana',
+  'PlayChange Foundation uses sports as a tool for social development in Ghana. We empower communities through sports and play, creating positive change and opportunities for youth.'
+)
 
 const sdgs = [
   {

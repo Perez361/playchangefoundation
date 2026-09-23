@@ -1,12 +1,14 @@
 import type { Metadata } from 'next'
+import { pageSeo } from '../seo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBullseye, faEye, faHeart, faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 
-export const metadata: Metadata = {
-  title: 'About Us - PlayChange Foundation | Our Story, Mission & Team',
-  description: 'Learn about PlayChange Foundation, a student-led sports NGO from University of Ghana. Discover our mission to empower communities through sports, our vision for Ghana, and meet our dedicated team transforming lives.',
-}
+export const metadata: Metadata = pageSeo(
+  '/about',
+  'About Us - PlayChange Foundation | Our Story, Mission & Team',
+  'Learn about PlayChange Foundation, a student-led sports NGO from University of Ghana. Discover our mission to empower communities through sports, our vision for Ghana, and meet our dedicated team transforming lives.'
+)
 
 const teamMembers = [
   {

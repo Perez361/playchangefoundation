@@ -5,6 +5,10 @@ import Footer from '@/components/Footer'
 import LoadingSpinner from '@/components/LoadingSpinner'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://playchangefoundation.org'),
+  alternates: {
+    canonical: '/',
+  },
   title: 'PlayChange Foundation - Empowering Communities Through Sports | Ghana',
   description: 'PlayChange Foundation uses sports as a tool for social development in Ghana. We empower communities through sports and play, creating positive change and opportunities for youth.',
   keywords: 'PlayChange Foundation, sports development, Ghana sports, youth empowerment, community development, sports NGO, sports for change, Ghana youth sports',
@@ -59,7 +63,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://playchangefoundation.org" />
         <link rel="icon" href="/images/pcf-logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/images/pcf-logo.png" />
       </head>

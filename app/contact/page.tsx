@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
+import { pageSeo } from '../seo'
 import ContactForm from '@/components/ContactForm'
 
-export const metadata: Metadata = {
-  title: 'Contact Us - PlayChange Foundation',
-  description: 'Get in touch with PlayChange Foundation. Contact us for partnerships, volunteering, or general inquiries.',
-}
+export const metadata: Metadata = pageSeo(
+  '/contact',
+  'Contact Us - PlayChange Foundation',
+  'Get in touch with PlayChange Foundation. Contact us for partnerships, volunteering, or general inquiries.'
+)
 
 export default function ContactPage() {
   return (

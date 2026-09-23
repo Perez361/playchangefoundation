@@ -1,13 +1,15 @@
 import type { Metadata } from 'next'
+import { pageSeo } from '../seo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: 'Our Initiatives - PlayChange Foundation',
-  description: 'Discover PlayChange Foundation initiatives: scholarships, health awareness, education, social inclusion, gender equity, and peace building through sports.',
-}
+export const metadata: Metadata = pageSeo(
+  '/initiatives',
+  'Our Initiatives - PlayChange Foundation',
+  'Discover PlayChange Foundation initiatives: scholarships, health awareness, education, social inclusion, gender equity, and peace building through sports.'
+)
 
 const initiatives = [
   {
