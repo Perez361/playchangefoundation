@@ -39,6 +39,9 @@ export default function Footer() {
                 <Link href="/news" className="text-gray-400 hover:text-white transition-colors duration-300">News</Link>
               </li>
               <li>
+                <Link href="/gallery" className="text-gray-400 hover:text-white transition-colors duration-300">Gallery</Link>
+              </li>
+              <li>
                 <Link href="/contact" className="text-gray-400 hover:text-white transition-colors duration-300">Contact Us</Link>
               </li>
             </ul>
