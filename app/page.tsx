@@ -284,13 +284,13 @@ export default function Home() {
                 className="block p-4 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 aria-label={`${partner.name} (opens in a new tab)`}
               >
-                <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-center justify-center h-24 w-48 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-center justify-center h-24 w-64 shadow-sm hover:shadow-md transition-shadow">
                   <Image
                     src={partner.logo}
                     alt={`${partner.name} logo`}
                     width={partner.logoWidth}
                     height={partner.logoHeight}
-                    sizes="160px"
+                    sizes="200px"
                     className="max-h-full w-auto object-contain"
                   />
                 </div>
