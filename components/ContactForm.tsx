@@ -6,40 +6,92 @@ import { faMapMarkerAlt, faEnvelope, faPhone, faClock } from '@fortawesome/free-
 import { phoneDisplay, phoneE164 } from '@/lib/contact'
 import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
+const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? '').replace(/\/$/, '')
+
+type Status =
+  | { state: 'idle' }
+  | { state: 'sent' }
+  | { state: 'error'; message: string }
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    // Honeypot: hidden from people, irresistible to bots. The API answers 204
+    // and drops anything that arrives with this filled in.
+    website: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [status, setStatus] = useState<Status>({ state: 'idle' })
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
+    setStatus({ state: 'idle' })
 
     // Basic form validation
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-      alert('Please fill in all fields')
-      setIsSubmitting(false)
+      setStatus({ state: 'error', message: 'Please fill in all fields.' })
       return
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
-      alert('Please enter a valid email address')
-      setIsSubmitting(false)
+      setStatus({ state: 'error', message: 'Please enter a valid email address.' })
       return
     }
 
-    // Simulate form submission
-    setTimeout(() => {
+    if (!API_URL) {
+      setStatus({
+        state: 'error',
+        message: 'The form is unavailable right now. Please email info@playchangefoundation.org.'
+      })
+      return
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      let res: Response
+      try {
+        res = await fetch(`${API_URL}/api/contact`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        })
+      } catch {
+        // fetch only rejects when the request never completed — offline, DNS,
+        // a blocked CORS preflight. Its own message ("Failed to fetch") means
+        // nothing to a visitor, so it must not be shown.
+        throw new Error('We could not reach the server.')
+      }
+
+      if (!res.ok) {
+        // The API returns a human-readable `error` for every failure it
+        // controls; fall back only when something else went wrong.
+        const body = await res.json().catch(() => null)
+        throw new Error(
+          typeof body?.error === 'string'
+            ? body.error
+            : 'Something went wrong sending your message.'
+        )
+      }
+
+      setStatus({ state: 'sent' })
+      setFormData({ name: '', email: '', subject: '', message: '', website: '' })
+    } catch (err) {
+      setStatus({
+        state: 'error',
+        message:
+          err instanceof Error
+            ? err.message
+            : 'Something went wrong sending your message.'
+      })
+    } finally {
       setIsSubmitting(false)
-      alert('Thank you for your message! We will get back to you soon.')
-      setFormData({ name: '', email: '', subject: '', message: '' })
-    }, 1000)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -179,6 +231,20 @@ export default function ContactForm() {
                     placeholder="Your message"
                   ></textarea>
                 </div>
+                {/* Honeypot. Hidden from people and from screen readers, and
+                    left out of the tab order, so only a bot fills it. */}
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="website">Leave this field empty</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleChange}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
                 <button 
                   type="submit"
                   disabled={isSubmitting}
@@ -186,6 +252,22 @@ export default function ContactForm() {
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
+                <div aria-live="polite">
+                  {status.state === 'sent' && (
+                    <p className="rounded-lg bg-green-50 border border-green-200 text-green-800 px-4 py-3">
+                      Thank you for your message. We will get back to you soon.
+                    </p>
+                  )}
+                  {status.state === 'error' && (
+                    <p className="rounded-lg bg-red-50 border border-red-200 text-red-800 px-4 py-3">
+                      {status.message}{' '}
+                      <a href="mailto:info@playchangefoundation.org" className="underline">
+                        Email us instead
+                      </a>
+                      .
+                    </p>
+                  )}
+                </div>
               </form>
             </div>
           </div>
