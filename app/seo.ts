@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { phoneE164 } from '@/lib/contact'
 
 export const siteUrl = 'https://playchangefoundation.org'
 
@@ -52,7 +53,7 @@ export const organizationAddress = {
 }
 
 export const organizationEmail = 'info@playchangefoundation.org'
-export const organizationPhone = '+233-54-777-1914'
+export const organizationPhone = phoneE164
 
 /**
  * Profiles that belong to the foundation. `sameAs` is how Google ties this site

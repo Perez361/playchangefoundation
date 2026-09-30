@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { phoneLocal } from '@/lib/contact'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -143,7 +144,7 @@ export default function Navbar() {
               <p className="text-center text-gray-600 mb-2">Account Name: <strong>PlayChange Foundation</strong></p>
               <div className="text-center">
                 <span className="inline-block bg-white px-4 py-2 rounded border border-amber-300 font-mono text-lg">
-                  0245219773
+                  {phoneLocal}
                 </span>
               </div>
             </div>
@@ -153,7 +154,7 @@ export default function Navbar() {
               <ol className="list-decimal list-inside space-y-1">
                 <li>Dial <strong>*170#</strong> on your MTN line</li>
                 <li>Select <strong>Send Money</strong></li>
-                <li>Enter the number: <strong>0547771914</strong></li>
+                <li>Enter the number: <strong>{phoneLocal}</strong></li>
                 <li>Enter your donation amount</li>
                 <li>Confirm the transaction</li>
               </ol>

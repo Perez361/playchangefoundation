@@ -3,6 +3,7 @@
 import { useState, FormEvent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faEnvelope, faPhone, faClock } from '@fortawesome/free-solid-svg-icons'
+import { phoneDisplay } from '@/lib/contact'
 import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 export default function ContactForm() {
@@ -84,7 +85,7 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Phone</h3>
-                    <p className="text-gray-600">+233 (0) 54 777 1914</p>
+                    <p className="text-gray-600">{phoneDisplay}</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">

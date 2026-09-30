@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import { phoneDisplay } from '@/lib/contact'
 
 export default function Footer() {
   return (
@@ -57,7 +58,7 @@ export default function Footer() {
               </p>
               <p>
                 <FontAwesomeIcon icon={faPhone} className="mr-2" />
-                +233 (0) 54 777 1914
+                {phoneDisplay}
               </p>
             </div>
             
