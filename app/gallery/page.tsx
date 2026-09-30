@@ -1,16 +1,19 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { pageSeo } from '../seo'
+import { pageSeo, breadcrumbSchema } from '../seo'
+import JsonLd from '@/components/JsonLd'
 import { getGallery, groupByAlbum } from '@/lib/gallery'
 import GalleryGrid from '@/components/GalleryGrid'
+import Image from 'next/image'
 
 // Next requires a literal here; keep it in step with GALLERY_REVALIDATE_SECONDS.
 export const revalidate = 300
 
 export const metadata: Metadata = pageSeo(
   '/gallery',
-  'Gallery - PlayChange Foundation',
-  'Photographs from PlayChange Foundation tournaments, health outreach and community programmes across Ghana.',
+  'Gallery | Sport, Play & Community Photos in Ghana',
+  'Photographs from PlayChange Foundation tournaments, physical activity sessions, health outreach and community programmes across Ghana.',
+  ['sport photos Ghana', 'community sports Ghana'],
 )
 
 export default async function GalleryPage() {
@@ -19,13 +22,19 @@ export default async function GalleryPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: 'Gallery', path: '/gallery' }])} />
       {/* Hero */}
       <div className="relative pt-16">
         <div className="h-[300px] relative">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/initiatives.jpg')" }}
-          >
+          <div className="absolute inset-0">
+            <Image
+              src="/images/initiatives.jpg"
+              alt="Children and youth playing sport at a PlayChange Foundation event"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent" />
           </div>
           <div className="absolute inset-0 flex items-center justify-center">

@@ -1,13 +1,21 @@
 import type { Metadata } from 'next'
-import { pageSeo } from '../seo'
+import { pageSeo, breadcrumbSchema } from '../seo'
+import JsonLd from '@/components/JsonLd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBullseye, faEye, faHeart, faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
+import { impactStats, impactIntro } from '@/lib/impact'
 
 export const metadata: Metadata = pageSeo(
   '/about',
-  'About Us - PlayChange Foundation | Our Story, Mission & Team',
-  'Learn about PlayChange Foundation, a student-led sports NGO from University of Ghana. Discover our mission to empower communities through sports, our vision for Ghana, and meet our dedicated team transforming lives.'
+  'About Us | Sport for Development NGO in Ghana',
+  'PlayChange Foundation (Play Change) is a youth-led sport for development NGO founded by students of Physical Education & Sport Studies at the University of Ghana, Legon. Read our story, mission, vision and meet the team.',
+  [
+    'about PlayChange Foundation',
+    'sport for development and peace Ghana',
+    'student-led NGO University of Ghana',
+    'youth-led nonprofit Accra',
+  ]
 )
 
 const teamMembers = [
@@ -72,10 +80,19 @@ const teamMembers = [
 export default function About() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: 'About Us', path: '/about' }])} />
       {/* Hero Section */}
       <div className="relative pt-16">
         <div className="h-[400px] relative">
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/about.jpg')" }}>
+          <div className="absolute inset-0">
+            <Image
+              src="/images/about.jpg"
+              alt="The PlayChange Foundation team with young participants"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
@@ -94,7 +111,7 @@ export default function About() {
             <div>
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
               <p className="text-gray-600 mb-4">
-                The PlayChange Foundation is a youth-led, nonprofit organization founded by students from the Department of Physical Education and Sport Studies, University of Ghana with the goal of using the influence of sports and play as a tool for social change, community development, and the empowerment of children and youth throughout Ghana.
+                The PlayChange Foundation — often written Play Change Foundation — is a youth-led, nonprofit organization founded by students from the Department of Physical Education and Sport Studies, University of Ghana with the goal of using the influence of sports and play as a tool for social change, community development, and the empowerment of children and youth throughout Ghana.
               </p>
               <p className="text-gray-600 mb-4">
                 Our main objective is to use sport and play strategically as a powerful tool for social change, community development, and the holistic empowerment of young people and children in Ghana.
@@ -113,8 +130,9 @@ export default function About() {
               <div className="relative w-full h-[400px] rounded-lg overflow-hidden shadow-lg">
                 <Image 
                   src="/images/story.jpeg" 
-                  alt="Community sports" 
+                  alt="PlayChange Foundation volunteers running a community sports session in Ghana" 
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
               </div>
@@ -167,26 +185,16 @@ export default function About() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Impact</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Through our various initiatives and programs, we're making a real difference in communities across Ghana.
+              {impactIntro}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">50+</div>
-              <p className="text-gray-600">Students Supported</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">3+</div>
-              <p className="text-gray-600">Communities Reached</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">5+</div>
-              <p className="text-gray-600">Sports Programs</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">100+</div>
-              <p className="text-gray-600">Lives Impacted</p>
-            </div>
+            {impactStats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                <p className="text-gray-600">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -207,8 +215,9 @@ export default function About() {
               <div className="h-72 relative">
                 <Image 
                   src={teamMembers[0].image} 
-                  alt={teamMembers[0].name} 
+                  alt={`${teamMembers[0].name}, ${teamMembers[0].role}, PlayChange Foundation`} 
                   fill
+                  sizes="384px"
                   className="object-cover"
                 />
               </div>
@@ -238,8 +247,9 @@ export default function About() {
                 <div className="h-64 relative">
                   <Image 
                     src={member.image} 
-                    alt={member.name} 
+                    alt={`${member.name}, ${member.role}, PlayChange Foundation`} 
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover"
                   />
                 </div>

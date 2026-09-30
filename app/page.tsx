@@ -3,11 +3,18 @@ import { pageSeo } from './seo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBullseye, faEye, faHeart, faShieldAlt, faUserCheck, faChalkboardTeacher, faFileContract, faExclamationTriangle, faClipboardCheck, faUsers, faGavel, faHandshake, faGraduationCap, faVenusMars, faBalanceScale, faCity } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
+import { impactStats, impactIntro } from '@/lib/impact'
 
 export const metadata: Metadata = pageSeo(
   '/',
-  'PlayChange Foundation - Empowering Communities Through Sports | Ghana',
-  'PlayChange Foundation uses sports as a tool for social development in Ghana. We empower communities through sports and play, creating positive change and opportunities for youth.'
+  'PlayChange Foundation | Sport for Development in Ghana',
+  'PlayChange Foundation (Play Change) is a youth-led Ghanaian nonprofit using sport, play and physical activity to promote health and prevent NCDs, widen access to education and empower young people.',
+  [
+    'sport for development Ghana',
+    'sports NGO in Ghana',
+    'sport and play for social change',
+    'physical activity and health Ghana',
+  ]
 )
 
 const sdgs = [
@@ -53,6 +60,17 @@ const sdgs = [
     subtitle: 'Partnerships for the Goals',
     description: 'Collaborating with local and international partners to amplify our impact and achieve sustainable development.'
   }
+]
+
+const partners = [
+  {
+    name: 'ScholAfrik',
+    url: 'https://scholafrik.com',
+    logo: '/images/partners/scholafrik.png',
+    // Intrinsic size of the trimmed logo file, so Next reserves the right box.
+    logoWidth: 640,
+    logoHeight: 206,
+  },
 ]
 
 const safeguarding = [
@@ -103,7 +121,15 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <header className="relative h-screen">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/hero.jpg')" }}>
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero.jpg"
+            alt="Young people taking part in a PlayChange Foundation sports session in Ghana"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
         </div>
         <div className="relative h-full flex items-center justify-center text-center text-white px-4 sm:px-6 lg:px-8">
@@ -134,7 +160,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Who We Are</h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              PlayChange Foundation is organized by students from the Department of Physical Education and Sport Studies in the University of Ghana that uses sport as a tool for social development. We believe that sport has the power to transform lives and communities.
+              PlayChange Foundation is organized by students from the Department of Physical Education and Sport Studies in the University of Ghana that uses sport as a tool for social development. We work in sport for development: using sport, play and physical activity to promote health and prevent non-communicable diseases (NCDs), widen access to education, and empower young people across Ghana. We believe that sport has the power to transform lives and communities.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -227,24 +253,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Impact</h2>
-            <p className="max-w-2xl mx-auto mb-16 text-lg opacity-90">Through our various initiatives and programs, we're making a real difference in communities across Ghana.</p>
+            <p className="max-w-2xl mx-auto mb-16 text-lg opacity-90">{impactIntro}</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold mb-4">100+</div>
-              <p className="text-xl opacity-90">Youth Participants</p>
-              <div className="mt-4 w-20 h-1 bg-yellow-400 mx-auto rounded-full"></div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold mb-4">3+</div>
-              <p className="text-xl opacity-90">Communities Reached</p>
-              <div className="mt-4 w-20 h-1 bg-yellow-400 mx-auto rounded-full"></div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold mb-4">5+</div>
-              <p className="text-xl opacity-90">Sports Programs</p>
-              <div className="mt-4 w-20 h-1 bg-yellow-400 mx-auto rounded-full"></div>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {impactStats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-5xl md:text-6xl font-bold mb-4">{stat.value}</div>
+                <p className="text-xl opacity-90">{stat.label}</p>
+                <div className="mt-4 w-20 h-1 bg-yellow-400 mx-auto rounded-full"></div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -257,44 +275,31 @@ export default function Home() {
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">We collaborate with amazing organizations that share our vision of empowering communities through sports and play.</p>
           </div>
           <div className="flex justify-center items-center gap-8 flex-wrap">
-            <div className="partner-logo-container p-4">
-              <div className="partner-logo bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24 w-48">
-                <span className="text-gray-600 font-semibold">ScholAfrik</span>
-              </div>
-            </div>
+            {partners.map((partner) => (
+              <a
+                key={partner.name}
+                href={partner.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                aria-label={`${partner.name} (opens in a new tab)`}
+              >
+                <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-center justify-center h-24 w-64 shadow-sm hover:shadow-md transition-shadow">
+                  <Image
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    width={partner.logoWidth}
+                    height={partner.logoHeight}
+                    sizes="200px"
+                    className="max-h-full w-auto object-contain"
+                  />
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Structured Data for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "NGO",
-            "name": "PlayChange Foundation",
-            "description": "PlayChange Foundation uses sports as a tool for social development in Ghana, empowering communities through sports and play.",
-            "url": "https://playchangefoundation.org",
-            "logo": "https://playchangefoundation.org/images/pcf-logo.png",
-            "sameAs": [
-              "https://facebook.com/playchangefoundation",
-              "https://twitter.com/playchange",
-              "https://instagram.com/playchangefoundation"
-            ],
-            "address": {
-              "@type": "PostalAddress",
-              "addressCountry": "Ghana"
-            },
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+233-54-777-1914",
-              "contactType": "customer service",
-              "email": "info@playchangefoundation.org"
-            }
-          })
-        }}
-      />
     </>
   )
 }

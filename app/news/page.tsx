@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { pageSeo } from '../seo'
+import { pageSeo, breadcrumbSchema } from '../seo'
+import JsonLd from '@/components/JsonLd'
 import { listPosts, formatDate } from '@/lib/news'
 
 // Next requires a literal here; keep it in step with NEWS_REVALIDATE_SECONDS.
@@ -9,8 +10,9 @@ export const revalidate = 300
 
 export const metadata: Metadata = pageSeo(
   '/news',
-  'News & Updates - PlayChange Foundation',
-  'Latest news from PlayChange Foundation: tournaments, scholarships, health outreach and community stories from across Ghana.',
+  'News & Updates | PlayChange Foundation Ghana',
+  'Latest news from PlayChange Foundation (Play Change): tournaments, scholarships, health and physical activity outreach, and community stories from across Ghana.',
+  ['sport for development news Ghana', 'PlayChange Foundation news'],
 )
 
 export default async function NewsPage() {
@@ -18,13 +20,19 @@ export default async function NewsPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: 'News', path: '/news' }])} />
       {/* Hero */}
       <div className="relative pt-16">
         <div className="h-[300px] relative">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/hero.jpg')" }}
-          >
+          <div className="absolute inset-0">
+            <Image
+              src="/images/hero.jpg"
+              alt="Young people taking part in a PlayChange Foundation sports session"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent" />
           </div>
           <div className="absolute inset-0 flex items-center justify-center">

@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: true,
+    // The source photos are large (hero.jpg is 2160x1620, initiatives.jpg is
+    // 6000x4000 and 3.2MB). With the optimizer off every visitor downloaded
+    // the originals, which is the largest single drag on Core Web Vitals —
+    // and on mobile data. Next now serves resized AVIF/WebP per device.
+    // Note for deploys: this uses Vercel's image optimization quota.
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
