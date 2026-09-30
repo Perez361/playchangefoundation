@@ -3,6 +3,7 @@ import { pageSeo } from '../seo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBullseye, faEye, faHeart, faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
+import { impactStats, impactIntro } from '@/lib/impact'
 
 export const metadata: Metadata = pageSeo(
   '/about',
@@ -167,26 +168,16 @@ export default function About() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Impact</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Through our various initiatives and programs, we're making a real difference in communities across Ghana.
+              {impactIntro}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">50+</div>
-              <p className="text-gray-600">Students Supported</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">3+</div>
-              <p className="text-gray-600">Communities Reached</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">5+</div>
-              <p className="text-gray-600">Sports Programs</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">100+</div>
-              <p className="text-gray-600">Lives Impacted</p>
-            </div>
+            {impactStats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                <p className="text-gray-600">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

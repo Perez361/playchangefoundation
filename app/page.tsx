@@ -3,6 +3,7 @@ import { pageSeo } from './seo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBullseye, faEye, faHeart, faShieldAlt, faUserCheck, faChalkboardTeacher, faFileContract, faExclamationTriangle, faClipboardCheck, faUsers, faGavel, faHandshake, faGraduationCap, faVenusMars, faBalanceScale, faCity } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
+import { impactStats, impactIntro } from '@/lib/impact'
 
 export const metadata: Metadata = pageSeo(
   '/',
@@ -227,24 +228,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Impact</h2>
-            <p className="max-w-2xl mx-auto mb-16 text-lg opacity-90">Through our various initiatives and programs, we're making a real difference in communities across Ghana.</p>
+            <p className="max-w-2xl mx-auto mb-16 text-lg opacity-90">{impactIntro}</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold mb-4">100+</div>
-              <p className="text-xl opacity-90">Youth Participants</p>
-              <div className="mt-4 w-20 h-1 bg-yellow-400 mx-auto rounded-full"></div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold mb-4">3+</div>
-              <p className="text-xl opacity-90">Communities Reached</p>
-              <div className="mt-4 w-20 h-1 bg-yellow-400 mx-auto rounded-full"></div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold mb-4">5+</div>
-              <p className="text-xl opacity-90">Sports Programs</p>
-              <div className="mt-4 w-20 h-1 bg-yellow-400 mx-auto rounded-full"></div>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {impactStats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-5xl md:text-6xl font-bold mb-4">{stat.value}</div>
+                <p className="text-xl opacity-90">{stat.label}</p>
+                <div className="mt-4 w-20 h-1 bg-yellow-400 mx-auto rounded-full"></div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
