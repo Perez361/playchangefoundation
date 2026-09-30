@@ -84,7 +84,15 @@ export default function About() {
       {/* Hero Section */}
       <div className="relative pt-16">
         <div className="h-[400px] relative">
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/about.jpg')" }}>
+          <div className="absolute inset-0">
+            <Image
+              src="/images/about.jpg"
+              alt="The PlayChange Foundation team with young participants"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
@@ -122,8 +130,9 @@ export default function About() {
               <div className="relative w-full h-[400px] rounded-lg overflow-hidden shadow-lg">
                 <Image 
                   src="/images/story.jpeg" 
-                  alt="Community sports" 
+                  alt="PlayChange Foundation volunteers running a community sports session in Ghana" 
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
               </div>
@@ -206,8 +215,9 @@ export default function About() {
               <div className="h-72 relative">
                 <Image 
                   src={teamMembers[0].image} 
-                  alt={teamMembers[0].name} 
+                  alt={`${teamMembers[0].name}, ${teamMembers[0].role}, PlayChange Foundation`} 
                   fill
+                  sizes="384px"
                   className="object-cover"
                 />
               </div>
@@ -237,8 +247,9 @@ export default function About() {
                 <div className="h-64 relative">
                   <Image 
                     src={member.image} 
-                    alt={member.name} 
+                    alt={`${member.name}, ${member.role}, PlayChange Foundation`} 
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover"
                   />
                 </div>

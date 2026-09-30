@@ -139,7 +139,15 @@ export default function Initiatives() {
       {/* Hero Section */}
       <div className="relative pt-16">
         <div className="h-[400px] relative">
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/initiatives.jpg')" }}>
+          <div className="absolute inset-0">
+            <Image
+              src="/images/initiatives.jpg"
+              alt="Children and youth playing sport at a PlayChange Foundation initiative"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
@@ -166,6 +174,7 @@ export default function Initiatives() {
                     src={initiative.image} 
                     alt={initiative.imageAlt} 
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                   />
                 </div>

@@ -110,7 +110,15 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <header className="relative h-screen">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/hero.jpg')" }}>
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero.jpg"
+            alt="Young people taking part in a PlayChange Foundation sports session in Ghana"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
         </div>
         <div className="relative h-full flex items-center justify-center text-center text-white px-4 sm:px-6 lg:px-8">

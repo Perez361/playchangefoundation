@@ -40,8 +40,9 @@ export default function Navbar() {
               <div className="relative h-10 w-10 flex-shrink-0">
                 <Image 
                   src="/images/pcf-logo.png" 
-                  alt="PlayChange Foundation Logo" 
+                  alt="PlayChange Foundation logo" 
                   fill
+                  sizes="40px"
                   className="object-contain"
                 />
               </div>

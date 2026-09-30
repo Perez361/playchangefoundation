@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { pageSeo, breadcrumbSchema } from '../seo'
 import JsonLd from '@/components/JsonLd'
 import ContactForm from '@/components/ContactForm'
+import Image from 'next/image'
 
 export const metadata: Metadata = pageSeo(
   '/contact',
@@ -17,7 +18,15 @@ export default function ContactPage() {
       {/* Hero Section */}
       <div className="relative pt-16">
         <div className="h-[300px] relative">
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/contacthero.jpg')" }}>
+          <div className="absolute inset-0">
+            <Image
+              src="/images/contacthero.jpg"
+              alt="PlayChange Foundation volunteers at a community event in Accra"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
