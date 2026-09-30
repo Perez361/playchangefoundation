@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { phoneE164 } from '@/lib/contact'
+import { phoneE164, socialProfiles } from '@/lib/contact'
 
 export const siteUrl = 'https://playchangefoundation.org'
 
@@ -56,15 +56,14 @@ export const organizationEmail = 'info@playchangefoundation.org'
 export const organizationPhone = phoneE164
 
 /**
- * Profiles that belong to the foundation. `sameAs` is how Google ties this site
- * to the same organization elsewhere, so a wrong URL here is worse than none —
- * keep this list to accounts we actually control.
+ * Profiles that belong to the foundation, for `sameAs`. Comes from the one
+ * list in lib/contact.ts so the markup and the visible links cannot disagree.
+ *
+ * The Facebook and Twitter URLs that used to sit here were never real
+ * accounts, and claiming a profile we do not control works against the entity
+ * matching `sameAs` exists to help.
  */
-export const organizationProfiles = [
-  'https://facebook.com/playchangefoundation',
-  'https://twitter.com/playchange',
-  'https://instagram.com/playchangefoundation',
-]
+export const organizationProfiles = socialProfiles.map((p) => p.url)
 
 // Next.js shallow-merges metadata, so a page that declares `openGraph` replaces
 // the layout's block outright. Build each page's from this base so siteName,

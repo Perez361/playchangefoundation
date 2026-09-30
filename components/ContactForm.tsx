@@ -3,8 +3,14 @@
 import { useState, FormEvent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faEnvelope, faPhone, faClock } from '@fortawesome/free-solid-svg-icons'
-import { phoneDisplay, phoneE164 } from '@/lib/contact'
-import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { phoneDisplay, phoneE164, socialProfiles } from '@/lib/contact'
+import { faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons'
+
+/** Brand marks for the accounts listed in lib/contact.ts. */
+const SOCIAL_ICONS = {
+  Instagram: faInstagram,
+  TikTok: faTiktok,
+} as const
 
 const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? '').replace(/\/$/, '')
 
@@ -159,18 +165,18 @@ export default function ContactForm() {
               <div className="mt-12 social-media">
                 <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
-                  <a href="#" className="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary/80 transition-colors duration-300" aria-label="Facebook">
-                    <FontAwesomeIcon icon={faFacebook} />
-                  </a>
-                  <a href="#" className="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary/80 transition-colors duration-300" aria-label="Twitter">
-                    <FontAwesomeIcon icon={faTwitter} />
-                  </a>
-                  <a href="#" className="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors duration-300" aria-label="Instagram">
-                    <FontAwesomeIcon icon={faInstagram} />
-                  </a>
-                  <a href="#" className="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary/80 transition-colors duration-300" aria-label="LinkedIn">
-                    <FontAwesomeIcon icon={faLinkedin} />
-                  </a>
+                  {socialProfiles.map((profile) => (
+                    <a
+                      key={profile.name}
+                      href={profile.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary/80 transition-colors duration-300"
+                      aria-label={`${profile.name} (opens in a new tab)`}
+                    >
+                      <FontAwesomeIcon icon={SOCIAL_ICONS[profile.name]} />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
