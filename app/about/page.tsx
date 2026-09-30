@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { pageSeo } from '../seo'
+import { pageSeo, breadcrumbSchema } from '../seo'
+import JsonLd from '@/components/JsonLd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBullseye, faEye, faHeart, faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
@@ -7,8 +8,14 @@ import { impactStats, impactIntro } from '@/lib/impact'
 
 export const metadata: Metadata = pageSeo(
   '/about',
-  'About Us - PlayChange Foundation | Our Story, Mission & Team',
-  'Learn about PlayChange Foundation, a student-led sports NGO from University of Ghana. Discover our mission to empower communities through sports, our vision for Ghana, and meet our dedicated team transforming lives.'
+  'About Us | Sport for Development NGO in Ghana',
+  'PlayChange Foundation (Play Change) is a youth-led sport for development NGO founded by students of Physical Education & Sport Studies at the University of Ghana, Legon. Read our story, mission, vision and meet the team.',
+  [
+    'about PlayChange Foundation',
+    'sport for development and peace Ghana',
+    'student-led NGO University of Ghana',
+    'youth-led nonprofit Accra',
+  ]
 )
 
 const teamMembers = [
@@ -73,6 +80,7 @@ const teamMembers = [
 export default function About() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: 'About Us', path: '/about' }])} />
       {/* Hero Section */}
       <div className="relative pt-16">
         <div className="h-[400px] relative">
@@ -95,7 +103,7 @@ export default function About() {
             <div>
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
               <p className="text-gray-600 mb-4">
-                The PlayChange Foundation is a youth-led, nonprofit organization founded by students from the Department of Physical Education and Sport Studies, University of Ghana with the goal of using the influence of sports and play as a tool for social change, community development, and the empowerment of children and youth throughout Ghana.
+                The PlayChange Foundation — often written Play Change Foundation — is a youth-led, nonprofit organization founded by students from the Department of Physical Education and Sport Studies, University of Ghana with the goal of using the influence of sports and play as a tool for social change, community development, and the empowerment of children and youth throughout Ghana.
               </p>
               <p className="text-gray-600 mb-4">
                 Our main objective is to use sport and play strategically as a powerful tool for social change, community development, and the holistic empowerment of young people and children in Ghana.

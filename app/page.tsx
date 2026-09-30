@@ -7,8 +7,14 @@ import { impactStats, impactIntro } from '@/lib/impact'
 
 export const metadata: Metadata = pageSeo(
   '/',
-  'PlayChange Foundation - Empowering Communities Through Sports | Ghana',
-  'PlayChange Foundation uses sports as a tool for social development in Ghana. We empower communities through sports and play, creating positive change and opportunities for youth.'
+  'PlayChange Foundation | Sport for Development in Ghana',
+  'PlayChange Foundation (Play Change) is a youth-led Ghanaian nonprofit using sport, play and physical activity to promote health and prevent NCDs, widen access to education and empower young people.',
+  [
+    'sport for development Ghana',
+    'sports NGO in Ghana',
+    'sport and play for social change',
+    'physical activity and health Ghana',
+  ]
 )
 
 const sdgs = [
@@ -135,7 +141,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Who We Are</h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              PlayChange Foundation is organized by students from the Department of Physical Education and Sport Studies in the University of Ghana that uses sport as a tool for social development. We believe that sport has the power to transform lives and communities.
+              PlayChange Foundation is organized by students from the Department of Physical Education and Sport Studies in the University of Ghana that uses sport as a tool for social development. We work in sport for development: using sport, play and physical activity to promote health and prevent non-communicable diseases (NCDs), widen access to education, and empower young people across Ghana. We believe that sport has the power to transform lives and communities.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -259,35 +265,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Structured Data for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "NGO",
-            "name": "PlayChange Foundation",
-            "description": "PlayChange Foundation uses sports as a tool for social development in Ghana, empowering communities through sports and play.",
-            "url": "https://playchangefoundation.org",
-            "logo": "https://playchangefoundation.org/images/pcf-logo.png",
-            "sameAs": [
-              "https://facebook.com/playchangefoundation",
-              "https://twitter.com/playchange",
-              "https://instagram.com/playchangefoundation"
-            ],
-            "address": {
-              "@type": "PostalAddress",
-              "addressCountry": "Ghana"
-            },
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+233-54-777-1914",
-              "contactType": "customer service",
-              "email": "info@playchangefoundation.org"
-            }
-          })
-        }}
-      />
     </>
   )
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { pageSeo } from '../seo'
+import { pageSeo, breadcrumbSchema } from '../seo'
+import JsonLd from '@/components/JsonLd'
 import { getGallery, groupByAlbum } from '@/lib/gallery'
 import GalleryGrid from '@/components/GalleryGrid'
 
@@ -9,8 +10,9 @@ export const revalidate = 300
 
 export const metadata: Metadata = pageSeo(
   '/gallery',
-  'Gallery - PlayChange Foundation',
-  'Photographs from PlayChange Foundation tournaments, health outreach and community programmes across Ghana.',
+  'Gallery | Sport, Play & Community Photos in Ghana',
+  'Photographs from PlayChange Foundation tournaments, physical activity sessions, health outreach and community programmes across Ghana.',
+  ['sport photos Ghana', 'community sports Ghana'],
 )
 
 export default async function GalleryPage() {
@@ -19,6 +21,7 @@ export default async function GalleryPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: 'Gallery', path: '/gallery' }])} />
       {/* Hero */}
       <div className="relative pt-16">
         <div className="h-[300px] relative">

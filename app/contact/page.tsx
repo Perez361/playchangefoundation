@@ -1,16 +1,19 @@
 import type { Metadata } from 'next'
-import { pageSeo } from '../seo'
+import { pageSeo, breadcrumbSchema } from '../seo'
+import JsonLd from '@/components/JsonLd'
 import ContactForm from '@/components/ContactForm'
 
 export const metadata: Metadata = pageSeo(
   '/contact',
-  'Contact Us - PlayChange Foundation',
-  'Get in touch with PlayChange Foundation. Contact us for partnerships, volunteering, or general inquiries.'
+  'Contact PlayChange Foundation | Legon, Accra, Ghana',
+  'Get in touch with PlayChange Foundation (Play Change) in Legon, Accra. Contact us about partnerships, funding, volunteering or bringing our sport and health programmes to your community.',
+  ['contact PlayChange Foundation', 'sports NGO Accra contact', 'partner with an NGO in Ghana'],
 )
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: 'Contact', path: '/contact' }])} />
       {/* Hero Section */}
       <div className="relative pt-16">
         <div className="h-[300px] relative">

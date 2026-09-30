@@ -14,18 +14,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
+      images: [`${baseUrl}/images/hero.jpg`],
     },
     {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
+      images: [`${baseUrl}/images/about.jpg`],
     },
     {
       url: `${baseUrl}/initiatives`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
+      images: [`${baseUrl}/images/initiatives.jpg`],
     },
     {
       url: `${baseUrl}/news`,
@@ -38,12 +41,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
+      images: [`${baseUrl}/images/initiatives.jpg`],
     },
     {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
+      images: [`${baseUrl}/images/contacthero.jpg`],
     },
   ]
 
@@ -56,6 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: post.publishedAt ? new Date(post.publishedAt) : new Date(),
     changeFrequency: 'monthly',
     priority: 0.6,
+    ...(post.coverImageUrl ? { images: [post.coverImageUrl] } : {}),
   }))
 
   return [...staticRoutes, ...postRoutes]
