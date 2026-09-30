@@ -62,6 +62,17 @@ const sdgs = [
   }
 ]
 
+const partners = [
+  {
+    name: 'ScholAfrik',
+    url: 'https://scholafrik.com',
+    logo: '/images/partners/scholafrik.png',
+    // Intrinsic size of the trimmed logo file, so Next reserves the right box.
+    logoWidth: 640,
+    logoHeight: 206,
+  },
+]
+
 const safeguarding = [
   {
     icon: faShieldAlt,
@@ -264,11 +275,27 @@ export default function Home() {
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">We collaborate with amazing organizations that share our vision of empowering communities through sports and play.</p>
           </div>
           <div className="flex justify-center items-center gap-8 flex-wrap">
-            <div className="partner-logo-container p-4">
-              <div className="partner-logo bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24 w-48">
-                <span className="text-gray-600 font-semibold">ScholAfrik</span>
-              </div>
-            </div>
+            {partners.map((partner) => (
+              <a
+                key={partner.name}
+                href={partner.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                aria-label={`${partner.name} (opens in a new tab)`}
+              >
+                <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-center justify-center h-24 w-48 shadow-sm hover:shadow-md transition-shadow">
+                  <Image
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    width={partner.logoWidth}
+                    height={partner.logoHeight}
+                    sizes="160px"
+                    className="max-h-full w-auto object-contain"
+                  />
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
