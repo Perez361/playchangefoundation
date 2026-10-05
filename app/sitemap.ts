@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { listPosts } from '@/lib/news'
+import { initiatives } from '@/lib/initiatives'
 
 const baseUrl = 'https://playchangefoundation.org'
 
@@ -52,6 +53,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
+  // One entry per programme page. These are static and always present, unlike
+  // the posts below, which depend on the API answering.
+  const initiativeRoutes: MetadataRoute.Sitemap = initiatives.map((initiative) => ({
+    url: `${baseUrl}/initiatives/${initiative.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+    images: [`${baseUrl}${initiative.image}`],
+  }))
+
   // Ask for more than a page of posts; the listing default would silently cap
   // the sitemap at nine entries.
   const { posts } = await listPosts(1, 50)
@@ -64,5 +75,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...(post.coverImageUrl ? { images: [post.coverImageUrl] } : {}),
   }))
 
-  return [...staticRoutes, ...postRoutes]
+  return [...staticRoutes, ...initiativeRoutes, ...postRoutes]
 }
