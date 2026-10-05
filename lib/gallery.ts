@@ -1,3 +1,4 @@
+import { fetchJson } from './api-fetch'
 const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? '').replace(/\/$/, '')
 
 export const GALLERY_REVALIDATE_SECONDS = 300
@@ -26,17 +27,13 @@ export async function getGallery(album?: string): Promise<GalleryResponse> {
 
   const query = album ? `?album=${encodeURIComponent(album)}` : ''
 
-  try {
-    const res = await fetch(`${API_URL}/api/gallery${query}`, {
-      next: { revalidate: GALLERY_REVALIDATE_SECONDS },
-    })
-    if (!res.ok) return EMPTY
-    return (await res.json()) as GalleryResponse
-  } catch {
-    // The API sleeps on Render's free tier. A cold start that times out must
-    // not take the page down with it.
-    return EMPTY
-  }
+  const data = await fetchJson<GalleryResponse>(`${API_URL}/api/gallery${query}`, {
+    revalidate: GALLERY_REVALIDATE_SECONDS,
+  })
+
+  // Still degrades to an empty gallery rather than an error, but only after
+  // the retries in fetchJson have given the sleeping API time to wake.
+  return data ?? EMPTY
 }
 
 /** Groups items by album, preserving the order the API returned them in. */

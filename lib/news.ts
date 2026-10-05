@@ -1,5 +1,6 @@
 import { marked } from 'marked'
 import sanitizeHtml from 'sanitize-html'
+import { fetchJson } from './api-fetch'
 import { imageHosts } from './image-hosts'
 
 const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? '').replace(/\/$/, '')
@@ -27,22 +28,15 @@ export interface Pagination {
   totalPages: number
 }
 
-async function getJson<T>(path: string): Promise<T | null> {
+async function getJson<T>(path: string, attempts?: number): Promise<T | null> {
   // Without a configured API the news section should render its empty state
   // rather than fail the whole build.
   if (!API_URL) return null
 
-  try {
-    const res = await fetch(`${API_URL}${path}`, {
-      next: { revalidate: NEWS_REVALIDATE_SECONDS },
-    })
-    if (!res.ok) return null
-    return (await res.json()) as T
-  } catch {
-    // The API sleeps on Render's free tier. A cold start that times out must
-    // not take the public site down with it.
-    return null
-  }
+  return fetchJson<T>(`${API_URL}${path}`, {
+    revalidate: NEWS_REVALIDATE_SECONDS,
+    attempts,
+  })
 }
 
 export async function listPosts(page = 1, perPage = 9) {
@@ -53,7 +47,11 @@ export async function listPosts(page = 1, perPage = 9) {
 }
 
 export async function getPost(slug: string) {
-  const data = await getJson<{ post: NewsPost }>(`/api/posts/${encodeURIComponent(slug)}`)
+  // Someone is waiting on this one, so do not sit through three cold starts.
+  const data = await getJson<{ post: NewsPost }>(
+    `/api/posts/${encodeURIComponent(slug)}`,
+    2,
+  )
   return data?.post ?? null
 }
 

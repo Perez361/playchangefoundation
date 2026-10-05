@@ -21,6 +21,12 @@ const nextConfig = {
       { source: '/about.html', destination: '/about', permanent: true },
       { source: '/contact.html', destination: '/contact', permanent: true },
       { source: '/initiatives.html', destination: '/initiatives', permanent: true },
+      // Search Console reports 404s that are almost certainly more of these.
+      // A redirect for a path the old site never had costs nothing, while a
+      // missing one throws away whatever link equity that URL had.
+      { source: '/news.html', destination: '/news', permanent: true },
+      { source: '/gallery.html', destination: '/gallery', permanent: true },
+      { source: '/home.html', destination: '/', permanent: true },
       // Serve every page from one hostname. Canonicals, the sitemap and the
       // Search Console property all use the apex domain, so www redirects to
       // it. The host condition keeps this off the apex itself, so it can't
