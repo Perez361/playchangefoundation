@@ -1,3 +1,5 @@
+const { imageHosts } = require('./lib/image-hosts')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -7,30 +9,9 @@ const nextConfig = {
     // and on mobile data. Next now serves resized AVIF/WebP per device.
     // Note for deploys: this uses Vercel's image optimization quota.
     formats: ['image/avif', 'image/webp'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.pexels.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'plus.unsplash.com',
-      },
-      // News cover images live in Cloudflare R2. Covers both the default
-      // r2.dev subdomain and a custom media hostname.
-      {
-        protocol: 'https',
-        hostname: '**.r2.dev',
-      },
-      {
-        protocol: 'https',
-        hostname: 'media.playchangefoundation.org',
-      },
-    ],
+    // Built from the shared list in lib/image-hosts.js, which the post-content
+    // renderer also reads before sending an image through the optimizer.
+    remotePatterns: imageHosts.map((hostname) => ({ protocol: 'https', hostname })),
   },
   // Legacy URLs from the old static site. Google still has these indexed and
   // they were returning 404, so send them to their App Router equivalents.
