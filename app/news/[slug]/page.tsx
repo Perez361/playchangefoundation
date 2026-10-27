@@ -126,7 +126,7 @@ export default async function NewsPostPage({ params }: Props) {
           </div>
 
           <div
-            className="prose prose-lg max-w-none prose-headings:text-primary prose-a:text-primary prose-img:rounded-lg"
+            className="prose prose-lg max-w-none prose-headings:text-primary prose-a:text-primary prose-img:rounded-lg prose-figcaption:italic"
             dangerouslySetInnerHTML={{ __html: html }}
           />
 

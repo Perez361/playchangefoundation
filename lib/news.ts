@@ -1,4 +1,4 @@
-import { marked } from 'marked'
+import { Marked, type Tokens } from 'marked'
 import sanitizeHtml from 'sanitize-html'
 import { fetchJson } from './api-fetch'
 import { imageHosts } from './image-hosts'
@@ -99,8 +99,42 @@ function optimized(src: string, width: number): string {
   return `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`
 }
 
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
+/**
+ * A paragraph holding nothing but an image becomes a captioned figure, taking
+ * the caption from the Markdown title: `![alt](url "A cross-section of
+ * participants")`. Markdown has nowhere else to put the line of text that
+ * belongs under a photo, and a bare paragraph after the image would read as
+ * body copy rather than a caption.
+ */
+const figures = {
+  renderer: {
+    paragraph(token: Tokens.Paragraph) {
+      const [first, ...rest] = token.tokens ?? []
+
+      // Anything else, an uncaptioned image included, falls through to the
+      // stock renderer.
+      if (first?.type !== 'image' || rest.length > 0 || !first.title) return false
+
+      // The title is deliberately dropped from the img: left on, it shows as
+      // a hover tooltip repeating the caption already printed below.
+      return (
+        `<figure><img src="${escapeHtml(first.href)}" alt="${escapeHtml(first.text)}">` +
+        `<figcaption>${escapeHtml(first.title)}</figcaption></figure>\n`
+      )
+    },
+  },
+}
+
 export function renderMarkdown(markdown: string): string {
-  const html = marked.parse(markdown, { async: false, gfm: true })
+  const html = new Marked({ gfm: true }).use(figures).parse(markdown, { async: false })
 
   return sanitizeHtml(html, {
     allowedTags: [
